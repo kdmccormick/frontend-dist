@@ -1,0 +1,8 @@
+# List microfrontend names.
+# They will be processed by build-frontends.sh,
+# which assumes that each repository is located
+# at https://github.com/edx/frontend-app-${name}.
+# Blank lines and lines starting with hashes are ignored.
+account
+gradebook
+profile
