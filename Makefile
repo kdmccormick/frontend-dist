@@ -6,7 +6,7 @@ DIST_DIR := dist
 DOCKER_DIR := docker
 DOCKER_FRONTENDS_DIR := $(DOCKER_DIR)/frontends
 
-IMAGE_TAG := kdmccormick/frontends:latest
+IMAGE_TAG := kdmccormick96/frontends:latest
 CONTAINER_NAME := edx.frontends
 PORT := 19000
 
