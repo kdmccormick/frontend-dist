@@ -1,0 +1,6 @@
+* check script + Makefile rule using foreach-frontend
+* simplify folder structure
+* volumes for devstack
+* makefile targets for docker push
+* comments in Makefile + auto-help
+* add readme(s), including required folder structure
