@@ -4,5 +4,5 @@
 # at https://github.com/edx/frontend-app-${name}.
 # Blank lines and lines starting with hashes are ignored.
 account
-gradebook
+payments
 profile

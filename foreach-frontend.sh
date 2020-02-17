@@ -2,9 +2,9 @@
 set -e
 set -o pipefail
 
-STRONG_MSG='\033[1;34m'  # Bold blue
-MSG='\033[0;36m'     # Normal cyan
-NC='\033[0m'             # No Color
+STRONG_MSG='\033[1;34m' # Bold blue
+MSG='\033[0;36m'        # Normal cyan
+NC='\033[0m'            # No Color
 
 this_script="$0"
 root_dir="$(pwd)"
