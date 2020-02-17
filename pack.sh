@@ -1,27 +1,24 @@
 #!/usr/bin/env bash
 set -e
 set -o pipefail
+. ./env
+frontend_name="$1"
 
 MSG='\033[0;32m'  # Green
 NC='\033[0m'      # No Color
-
-REPO_NAME_PREFIX=frontend-app-
-PROD_CONFIG=webpack.prod.config.js
 
 root_dir=$(pwd)
 repos_dir="$root_dir/repos"
 dists_dir="$root_dir/dist"
 docker_frontends_dir="$root_dir/docker/frontends"
 
-frontend_name="$1"
-repo_name="${REPO_NAME_PREFIX}${frontend_name}"
+repo_name="frontend-app-${frontend_name}"
 repo_dir="$repos_dir/$repo_name"
 echo -e "${MSG}Running 'npm install' in ${repo_dir}...${NC}"
 cd "$repo_dir"
 npm install
 
-public_path="/${frontend_name}"
-webpack_command="$(npm bin)/webpack --config '${PROD_CONFIG}' --output-public-path '${public_path}'"
+webpack_command="$(npm bin)/webpack --config 'webpack.prod.config.js' --output-public-path '/${frontend_name}'"
 echo -e "${MSG}Running webpack: ${webpack_command}${NC}"
 $webpack_command
 
@@ -34,8 +31,3 @@ cp -r "$src_dist_dir"/* "$dst_dist_dir"/
 report_file="$dst_dist_dir/report.html"
 echo -e "${MSG}Removing ${report_file}; original report still available in repo."
 rm -f "$report_file"
-
-docker_frontend_dir="$docker_frontends_dir/$frontend_name"
-echo -e "${MSG}Finally, copying distribution to Docker build context.${NC}"
-mkdir -p "$docker_frontend_dir"
-cp -r "$dst_dist_dir"/* "$docker_frontend_dir"/
