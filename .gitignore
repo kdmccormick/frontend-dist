@@ -1,4 +1,5 @@
 node_modules/
 repos/
 dist/
-docker/frontends/
+prod/frontends/
+env.overrides
