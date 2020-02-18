@@ -18,7 +18,7 @@ echo -e "${MSG}Running 'npm install' in ${repo_dir}...${NC}"
 cd "$repo_dir"
 npm install
 
-webpack_command="$(npm bin)/webpack --config 'webpack.prod.config.js' --output-public-path '/${frontend_name}'"
+webpack_command="$(npm bin)/webpack --config 'webpack.prod.config.js'"
 echo -e "${MSG}Running webpack: ${webpack_command}${NC}"
 $webpack_command
 

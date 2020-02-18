@@ -27,9 +27,9 @@ check.%:
 	./check.sh $*
 
 docker.build.base:
-	rm -rf docker_base/frontends
-	mkdir -p docker_base/frontends
-	cp -r dist/* docker_base/frontends/
+	#rm -rf docker_base/frontends
+	#mkdir -p docker_base/frontends
+	#cp -r dist/* docker_base/frontends/
 	. ./env && \
 	cd docker_base && \
 	docker build . \
@@ -55,7 +55,7 @@ docker.down:
 	. ./env && docker rm "$$DOCKER_CONTAINER_NAME"
 
 docker.shell:
-	docker exec -it ${DOCKER_CONTAINER_NAME} /bin/bash
+	. ./env && docker exec -it "$$DOCKER_CONTAINER_NAME" /bin/bash
 
 clean:
 	rm -rf repos
