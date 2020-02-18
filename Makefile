@@ -55,7 +55,7 @@ docker.down:
 	. ./env && docker rm "$$DOCKER_CONTAINER_NAME"
 
 docker.shell:
-	docker exec -it ${DOCKER_CONTAINER_NAME} /bin/bash
+	. ./env && docker exec -it "$$DOCKER_CONTAINER_NAME" /bin/bash
 
 clean:
 	rm -rf repos
