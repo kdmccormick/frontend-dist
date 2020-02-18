@@ -1,5 +1,4 @@
-* check script + Makefile rule using foreach-frontend
-# * simplify folder structure
+* simplify folder structure
 * run 'npm run webpack' or something more generic
 * volumes for devstack
 * makefile targets for docker push

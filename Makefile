@@ -1,11 +1,12 @@
-.PHONY: all build check.all clean docker.down docker.prod.build docker.prod.up \
-        docker.shell download.all full_clean pack.all test
+.PHONY: all build check.all clean docker.build.base docker.down \
+        docker.push.base docker.shell docker.up.down download.all full_clean \
+        pack.all test
 
 all: build
 
-build: download.all pack.all docker.prod.build
+build: download.all pack.all docker.build.base
 
-test: build docker.prod.up check.all
+test: build docker.up.base check.all
 
 download.all:
 	./foreach-frontend.sh ./download.sh
@@ -25,18 +26,21 @@ check.all:
 check.%:
 	./check.sh $*
 
-docker.prod.build:
-	rm -rf prod/frontends
-	mkdir -p prod/frontends
-	cp -r dist/* prod/frontends/
+docker.build.base:
+	rm -rf docker_base/frontends
+	mkdir -p docker_base/frontends
+	cp -r dist/* docker_base/frontends/
 	. ./env && \
-	cd prod && \
+	cd docker_base && \
 	docker build . \
-	    --tag "$$DOCKER_PROD_IMAGE_TAG" \
+	    --tag "$$DOCKER_BASE_IMAGE_TAG" \
 	    --build-arg NGINX_HTML_DIR="$$NGINX_HTML_DIR" \
 	    --build-arg NGINX_CONTAINER_PORT="$$NGINX_CONTAINER_PORT"
 
-docker.prod.up:
+docker.push.base:
+	. ./env && docker push "$$DOCKER_BASE_IMAGE_TAG"
+
+docker.up.base:
 	. ./env && \
 	docker run \
 	    --detach \
@@ -44,7 +48,7 @@ docker.prod.up:
 	    --interactive \
 	    --publish "$$NGINX_HOST_PORT":"$$NGINX_CONTAINER_PORT" \
 	    --name "$$DOCKER_CONTAINER_NAME" \
-	    "$$DOCKER_PROD_IMAGE_TAG"
+	    "$$DOCKER_BASE_IMAGE_TAG"
 
 docker.down:
 	. ./env && docker stop "$$DOCKER_CONTAINER_NAME" || true
@@ -56,7 +60,7 @@ docker.shell:
 clean:
 	rm -rf repos
 	rm -rf dist
-	rm -rf prod/frontends
+	rm -rf docker_base/frontends
 
 full_clean: clean
 	rm -rf node_modules

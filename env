@@ -1,7 +1,6 @@
 #!/bin/sh
 
-DOCKER_PROD_IMAGE_TAG=kdmccormick96/edx-frontends-prod:latest
-DOCKER_DEV_IMAGE_TAG=kdmccormick96/edx-frontends-dev:latest
+DOCKER_BASE_IMAGE_TAG=kdmccormick96/edx-frontends-base:latest
 DOCKER_CONTAINER_NAME=edx.frontends
 NGINX_HTML_DIR=/var/www/html
 NGINX_CONTAINER_PORT=80
