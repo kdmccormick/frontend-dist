@@ -10,9 +10,8 @@ this_script="$0"
 root_dir="$(pwd)"
 frontend_list_file="$root_dir/frontends.lst"
 
-command="$1"
-command_args="${@:2}"
-echo -e -n "${STRONG_MSG}Will call ${MSG}${command} \${frontend_name} ${command_args}"
+command="$@"
+echo -e -n "${STRONG_MSG}Will call ${MSG}${command} "
 echo -e    "${STRONG_MSG}for each frontend.${NC}"
 
 while read -r line; do
@@ -22,9 +21,6 @@ while read -r line; do
         continue
     fi
 
-    frontend_name="$line"
-    to_run="${command} ${frontend_name} ${command_args}"
-    echo -e "${STRONG_MSG}${this_script}:${MSG} ${to_run}${NC}"
-    $to_run
+    FRONTEND_NAME=$line ${command}
 
 done < "$frontend_list_file"

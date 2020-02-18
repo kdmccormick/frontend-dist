@@ -1,24 +1,28 @@
-.PHONY: all build check.all clean docker.build.base docker.down \
-        docker.push.base docker.shell docker.up.down download.all full_clean \
-        pack.all test
+.PHONY: all build check.all clean dist dist.frontend docker.build.base \
+        docker.build.base.copy docker.build.base.run docker.down \
+        docker.push.base docker.shell docker.up.base full_clean test
 
 all: build
 
-build: download.all pack.all docker.build.base
+build: dist docker.build.base
 
 test: build docker.up.base check.all
 
-download.all:
-	./foreach-frontend.sh ./download.sh
+dist:
+	./foreach-frontend.sh make dist.frontend
 
-download.%:
-	./download.sh $*
+dist.all.%:
+	./foreach-frontend.sh make dist.frontend.$*
 
-pack.all:
-	./foreach-frontend.sh ./pack.sh
+dist.frontend: \
+	dist.frontend.01-update-repo \
+	dist.frontend.02-npm-install \
+	dist.frontend.03-generate-config \
+	dist.frontend.04-run-webpack \
+	dist.frontend.05-copy-to-dist
 
-pack.%:
-	./pack.sh $*
+dist.frontend.%:
+	dist-pipeline/$*.sh
 
 check.all:
 	./foreach-frontend.sh ./check.sh
@@ -26,10 +30,14 @@ check.all:
 check.%:
 	./check.sh $*
 
-docker.build.base:
+docker.build.base: docker.build.base.copy docker.build.base.run
+
+docker.build.base.copy:
 	rm -rf docker_base/frontends
 	mkdir -p docker_base/frontends
 	cp -r dist/* docker_base/frontends/
+
+docker.build.base.run:
 	. ./env && \
 	cd docker_base && \
 	docker build . \
