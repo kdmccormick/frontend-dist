@@ -1,6 +1,18 @@
-* simplify folder structure
-* run 'npm run webpack' or something more generic
-* volumes for devstack
+
+Figure out how to inject configuration into microfrontends...
+some values are in common (e.g. SUPPORT_URL), some are different
+for each frontend (e.g. BASE_URL).
+
+Figure out how to do `npm run webpack ...` in each repo instead
+of brittle `$(npm webpack) ...`. Potential solutions:
+ * figure out how to pass `--output-public-path` through `fedx-scripts webpack`
+ * see if all frontends can share one directory, and then pass copy-rename
+   index.html files.
+
+
+Figure out volumes (for live repos) for devstack.
+
+Clean up this repo
 * makefile targets for docker push
 * comments in Makefile + auto-help
 * add readme(s), including required folder structure
