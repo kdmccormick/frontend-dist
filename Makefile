@@ -1,11 +1,11 @@
-.PHONY: all build check.all clean dist dist.frontend docker.build.base \
-        docker.build.base.copy docker.build.base.run docker.down \
-        docker.push.base docker.reup.base docker.shell docker.up.base \
-        full_clean test
+.PHONY: all build check.all clean dist dist.frontend docker.build \
+        docker.build.base docker.build.base.copy docker.build.base.run \
+        docker.down docker.push.base docker.reup.base docker.shell \
+        docker.up.base full_clean test
 
 all: build
 
-build: dist docker.build.base
+build: dist docker.build
 
 test: build docker.up.base check.all
 
@@ -30,6 +30,8 @@ check.all:
 
 check.%:
 	./check.sh $*
+
+docker.build: docker.build.base
 
 docker.build.base: docker.build.base.copy docker.build.base.run
 
