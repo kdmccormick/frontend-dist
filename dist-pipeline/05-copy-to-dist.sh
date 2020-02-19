@@ -9,5 +9,5 @@ mkdir -p "$dst_dist_dir"
 cp -r "$src_dist_dir"/* "$dst_dist_dir"/
 
 report_file="$dst_dist_dir/report.html"
-echo -e "${MSG}Removing ${report_file}; original report still available in repo."
+echo -e "${MSG}Removing ${report_file}; original report still available in repo.${NC}"
 rm -f "$report_file"
