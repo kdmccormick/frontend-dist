@@ -1,6 +1,7 @@
 .PHONY: all build check.all clean dist dist.frontend docker.build.base \
         docker.build.base.copy docker.build.base.run docker.down \
-        docker.push.base docker.shell docker.up.base full_clean test
+        docker.push.base docker.reup.base docker.shell docker.up.base \
+        full_clean test
 
 all: build
 
@@ -58,9 +59,11 @@ docker.up.base:
 	    --name "$$DOCKER_CONTAINER_NAME" \
 	    "$$DOCKER_BASE_IMAGE_TAG"
 
+docker.reup.base: docker.down docker.up.base
+
 docker.down:
 	. ./env && docker stop "$$DOCKER_CONTAINER_NAME" || true
-	. ./env && docker rm "$$DOCKER_CONTAINER_NAME"
+	. ./env && docker rm "$$DOCKER_CONTAINER_NAME" || true
 
 docker.shell:
 	. ./env && docker exec -it "$$DOCKER_CONTAINER_NAME" /bin/bash

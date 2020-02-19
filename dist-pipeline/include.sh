@@ -10,7 +10,7 @@ NC='\033[0m'      # No Color
 
 msgbold='\033[1;32m'  # Green
 
-if [[ -z $frontend_name ]]; then
+if [[ -z "$frontend_name" ]]; then
 	echo -e "${ERR}Environtment variable FRONTEND_NAME must be set. Exiting.${NC}"
 	exit 123
 else
