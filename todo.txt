@@ -10,6 +10,11 @@ of brittle `$(npm webpack) ...`. Potential solutions:
    index.html files.
 
 
+Add nginx rewrite rules to make redirects more user-friendly
+(tolerate trailing slashes, etc.).
+
+Consider making directory at index.html.
+
 Figure out volumes (for live repos) for devstack.
 
 Clean up this repo
