@@ -11,8 +11,8 @@ root_dir="$(pwd)"
 frontend_list_file="$root_dir/frontends.lst"
 
 command="$@"
-echo -e -n "${STRONG_MSG}Will call ${MSG}${command} "
-echo -e    "${STRONG_MSG}for each frontend.${NC}"
+echo -e -n "${STRONG_MSG}Will call ${MSG}${command} " >&2
+echo -e    "${STRONG_MSG}for each frontend.${NC}" >&2
 
 while read -r line; do
 

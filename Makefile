@@ -1,11 +1,11 @@
 .PHONY: all build check.all clean dist dist.frontend docker.build \
         docker.build.base docker.build.base.copy docker.build.base.run \
         docker.down docker.push.base docker.reup.base docker.shell \
-        docker.up.base full_clean test
+        docker.up.base full_clean index-page test
 
 all: build
 
-build: dist docker.build
+build: dist index-page docker.build
 
 test: build docker.up.base check.all
 
@@ -18,12 +18,17 @@ dist.all.%:
 dist.frontend: \
 	dist.frontend.01-update-repo \
 	dist.frontend.02-npm-install \
-	dist.frontend.03-generate-config \
+	dist.frontend.03-inject-config \
 	dist.frontend.04-run-webpack \
 	dist.frontend.05-copy-to-dist
 
 dist.frontend.%:
 	dist-pipeline/$*.sh
+
+index-page:
+	index-page/gen.sh
+	cp -f index-page/index.html dist/
+	cp -f index-page/favicon.ico dist/
 
 check.all:
 	./foreach-frontend.sh ./check.sh
