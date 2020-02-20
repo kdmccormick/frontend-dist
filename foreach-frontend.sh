@@ -21,6 +21,6 @@ while read -r line; do
         continue
     fi
 
-    FRONTEND_NAME=$line ${command}
+    FRONTEND=$line ${command}
 
 done < "$frontend_list_file"
