@@ -1,19 +1,10 @@
 
-Figure out how to inject configuration into microfrontends...
-some values are in common (e.g. SUPPORT_URL), some are different
-for each frontend (e.g. BASE_URL).
-
 Figure out how to do `npm run webpack ...` in each repo instead
 of brittle `$(npm webpack) ...`. Potential solutions:
  * figure out how to pass `--output-public-path` through `fedx-scripts webpack`
- * see if all frontends can share one directory, and then pass copy-rename
-   index.html files.
-
 
 Add nginx rewrite rules to make redirects more user-friendly
 (tolerate trailing slashes, etc.).
-
-Consider making directory at index.html.
 
 Figure out volumes (for live repos) for devstack.
 

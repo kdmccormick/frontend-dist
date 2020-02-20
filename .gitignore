@@ -1,5 +1,4 @@
 node_modules/
 repos/
 dist/
-docker_base/frontends/
 env.overrides
