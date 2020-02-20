@@ -23,7 +23,7 @@ dist.frontend: \
 	dist.frontend.05-copy-to-dist
 
 dist.frontend.%:
-	dist-pipeline/$*.sh
+	dist-pipeline/$**.sh
 
 index-page:
 	index-page/gen.sh

@@ -1,7 +1,10 @@
 #!/bin/sh
 
+WEBPACK_MINIMIZE=false
+
 DOCKER_BASE_IMAGE_TAG=kdmccormick96/edx-frontends-base:latest
 DOCKER_CONTAINER_NAME=edx.frontends
+
 NGINX_HTML_DIR=/var/www/html
 NGINX_CONTAINER_PORT=80
 NGINX_HOST_PORT=19000

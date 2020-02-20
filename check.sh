@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 . ./env
-frontend_name="$FRONTEND_NAME"
+frontend_name="$FRONTEND"
 
 SUCCESS='\033[0;32m'  # Green
 NC='\033[0m'          # No Color
