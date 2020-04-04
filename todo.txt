@@ -1,14 +1,23 @@
+Why do we get "The page you're looking for is unavailable or there's an error in the URL." on the account settings page?
 
-Figure out how to do `npm run webpack ...` in each repo instead
-of brittle `$(npm webpack) ...`. Potential solutions:
- * figure out how to pass `--output-public-path` through `fedx-scripts webpack`
+
+
 
 Add nginx rewrite rules to make redirects more user-friendly
 (tolerate trailing slashes, etc.).
 
+
+
+
+
 Figure out volumes (for live repos) for devstack.
+
+
+
+
 
 Clean up this repo
 * makefile targets for docker push
 * comments in Makefile + auto-help
 * add readme(s), including required folder structure
+* .dockerignore might simplify repo structure

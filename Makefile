@@ -7,7 +7,7 @@ all: build
 
 build: dist index-page docker.build
 
-test: build docker.up.base check.all
+test: build docker.reup.base check.all
 
 dist:
 	./foreach-frontend.sh make dist.frontend

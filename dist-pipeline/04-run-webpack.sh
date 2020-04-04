@@ -4,9 +4,9 @@
 repo_dir=repos/frontend-app-${frontend_name}
 cd "$repo_dir"
 
-webpack_command="$(npm bin)/webpack --config 'webpack.prod.config.js'"
-webpack_command="$webpack_command --output-public-path '/${frontend_name}/'"
-# TODO: why doesn't the next line do anything when uncommented?
-# webpack_command="$webpack_command --optimize-minimize $WEBPACK_MINIMIZE"
+config="--config 'webpack.prod.config.js'"
+output_public_path="--output-public-path='/${frontend_name}/'"
+optimize_minimize="--optimize-minimize $WEBPACK_MINIMIZE" # TODO: Does this work?
+webpack_command="npm run build -- $config $output_public_path $optimize_minimize"
 echo -e "${MSG}Running webpack: ${webpack_command}${NC}" >&2
 $webpack_command
