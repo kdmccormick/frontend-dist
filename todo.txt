@@ -1,5 +1,10 @@
 Why do we get "The page you're looking for is unavailable or there's an error in the URL." on the account settings page?
 
+> SOLUTION: Relative routes!
+   > but how to do we that?
+      > change every MFE
+      > upgrade to Router v6?
+
 
 
 
