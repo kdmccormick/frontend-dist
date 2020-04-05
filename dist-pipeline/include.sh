@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -e
 set -o pipefail
+set -u
 . ./env
 frontend_name="$FRONTEND"
 
 MSG='\033[0;32m'  # Green
+WARN='\033[0;33m'  # Yellow
 ERR='\033[0;31m'  # Red
 NC='\033[0m'      # No Color
 

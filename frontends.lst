@@ -3,6 +3,10 @@
 # which assumes that each repository is located
 # at https://github.com/edx/frontend-app-${name}.
 # Blank lines and lines starting with hashes are ignored.
+# Inline comments are not supported.
 account
 payments
 profile
+gradebook
+program-console
+learning

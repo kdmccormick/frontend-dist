@@ -1,28 +1,32 @@
-Why do we get "The page you're looking for is unavailable or there's an error in the URL." on the account settings page?
 
-> SOLUTION: Relative routes!
-   > but how to do we that?
-      > change every MFE
-      > upgrade to Router v6?
+Issues in this repo:
+* Add config for program-console, learning.
+* Maybe we shouldn't pass in optimize_minimize, and just let NODE_ENV dictate it.
+* Add nginx rewrite rules to tolerate trailing slashes.
+* Payments gives blank page.
+* Gradebook gives Nginx 404.
+* Profile fails in react router.
 
+Clean up for this repo (decreasing priority):
+* Shared log_msg/log_warning/log_err functions instead of
+  'echo -e "${COL}a message{NC}" >&2 for everything.
+* Use 'set -x' instead of echoing commands.
+* Use .dockerignore simplify repo structure.
+* Makefile targets for docker push.
+* Overrides for frontends.lst
+* Comments in Makefile + auto-generated 'make help' rule.
+* Add readme(s), including required folder structure.
 
+Devstack:
+* Figure out volumes for live repositories.
 
+External issues:
+* Make login redirects work.
+* Use relative paths (handled by 04-apply-shims.sh currently).
+* Make env.development compatible (handled by 03-inject-config.sh currently).
 
-Add nginx rewrite rules to make redirects more user-friendly
-(tolerate trailing slashes, etc.).
-
-
-
-
-
-Figure out volumes (for live repos) for devstack.
-
-
-
-
-
-Clean up this repo
-* makefile targets for docker push
-* comments in Makefile + auto-help
-* add readme(s), including required folder structure
-* .dockerignore might simplify repo structure
+Longer term:
+* We assume repo names and location. Should be more flexible.
+* Move this to tubular or something.
+* Config could be JSON.
+* Automate docker builds.

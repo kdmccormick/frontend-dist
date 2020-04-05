@@ -15,14 +15,23 @@ dist:
 dist.all.%:
 	./foreach-frontend.sh make dist.frontend.$*
 
-dist.frontend: \
-	dist.frontend.01-update-repo \
-	dist.frontend.02-npm-install \
-	dist.frontend.03-inject-config \
-	dist.frontend.04-run-webpack \
-	dist.frontend.05-copy-to-dist
+dist.frontend: dist.frontend.01+
 
-dist.frontend.%:
+dist.frontend.01+: dist.frontend.stage.01-update-repo dist.frontend.02+
+
+dist.frontend.02+: dist.frontend.stage.02-npm-install dist.frontend.03+
+
+dist.frontend.03+: dist.frontend.stage.03-inject-config dist.frontend.04+
+
+dist.frontend.04+: dist.frontend.stage.04-apply-shims dist.frontend.05+
+
+dist.frontend.05+: dist.frontend.stage.05-run-webpack dist.frontend.06+
+
+dist.frontend.06+: dist.frontend.stage.06-copy-to-dist dist.frontend.07+
+
+dist.frontend.07+: |
+
+dist.frontend.stage.%:
 	dist-pipeline/$**.sh
 
 index-page:
@@ -76,8 +85,14 @@ docker.shell:
 	. ./env && docker exec -it "$$DOCKER_CONTAINER_NAME" /bin/bash
 
 clean:
-	rm -rf repos
-	rm -rf dist
+	if [ -z "$$FRONTEND" ]; \
+		then echo "Cleaning all." && \
+			rm -rf repos && \
+			rf -rf dist; \
+		else echo "Cleaning $$FRONTEND." && \
+			rm -rf "repos/frontend-app-$$FRONTEND" && \
+			rm -rf "dist/$$FRONTEND"; \
+		fi
 	rm -rf docker_base/frontends
 
 full_clean: clean
