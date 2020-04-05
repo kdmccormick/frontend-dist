@@ -5,8 +5,6 @@
 # Blank lines and lines starting with hashes are ignored.
 # Inline comments are not supported.
 account
-payment
-profile
-gradebook
-program-console
-learning
+# gradebook
+# program-console
+# learning

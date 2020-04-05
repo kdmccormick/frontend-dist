@@ -6,8 +6,5 @@ cd "$repo_dir"
 
 echo -e "${MSG}Running webpack.${NC}" >&2
 set -x
-npm run build -- \
-	--output-public-path="" \
-	--optimize-minimize="$WEBPACK_MINIMIZE" \
-	--env.NODE_ENV="$NODE_ENV"  # TODO: this doesn't work.
+npm run build -- --optimize-minimize="$WEBPACK_MINIMIZE"
 set +x

@@ -24,13 +24,11 @@ dist.one.02+: dist.one.stage.02-npm-install dist.one.03+
 
 dist.one.03+: dist.one.stage.03-inject-config dist.one.04+
 
-dist.one.04+: dist.one.stage.04-apply-shims dist.one.05+
+dist.one.04+: dist.one.stage.04-run-webpack dist.one.05+
 
-dist.one.05+: dist.one.stage.05-run-webpack dist.one.06+
+dist.one.05+: dist.one.stage.05-copy-to-dist dist.one.06+
 
-dist.one.06+: dist.one.stage.06-copy-to-dist dist.one.07+
-
-dist.one.07+: |
+dist.one.06+: |
 
 dist.one.stage.%:
 	dist-pipeline/$**.sh
