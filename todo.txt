@@ -9,14 +9,21 @@ Immediate issues in this repo:
 		* Profile gives Nginx 404 on user pages.
 	* Also, rewrite rules should handle trailing slashes.
 
+
+frontend-build:
+* webpack-dev command
+
 To do on kdmccormick/devstack branches:
-* Use kdmccormick/devstack branch of frontend-build.
+* Use kdmccormick/devstack branch of kdmccormick/frontend-build.
+* Add dev-build command
 * Use relative paths in React routing.
 * Update .env.development
 
 kdmccormick/devstack branch status:
 * account
-	* react routing made relative
+	* Use relative paths in React routing.
+	* Use kdmccormick/devstack branch of kdmccormick/frontend-build.
+	* Add dev-build command
 * gradebook
 	*
 * program-console

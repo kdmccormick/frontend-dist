@@ -6,5 +6,5 @@ cd "$repo_dir"
 
 echo -e "${MSG}Running webpack.${NC}" >&2
 set -x
-npm run build -- --optimize-minimize="$WEBPACK_MINIMIZE"
+npm run dev-build
 set +x
