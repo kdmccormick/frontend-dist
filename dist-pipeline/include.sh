@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 set -e
 set -o pipefail
-set -u
 . ./env
-frontend_name="$FRONTEND"
 
 MSG='\033[0;32m'  # Green
 WARN='\033[0;33m'  # Yellow
@@ -12,9 +10,12 @@ NC='\033[0m'      # No Color
 
 msgbold='\033[1;32m'  # Green
 
+frontend_name="$FRONTEND"
 if [[ -z "$frontend_name" ]]; then
 	echo -e "${ERR}Environtment variable FRONTEND must be set. Exiting.${NC}" >&2
 	exit 123
 else
 	echo -e "${msgbold}Running '$0' for FRONTEND=$frontend_name${NC}" >&2
 fi
+
+set -u

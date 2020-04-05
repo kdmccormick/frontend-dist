@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 set -o pipefail
+set -u
 
 STRONG_MSG='\033[1;34m' # Bold blue
 MSG='\033[0;36m'        # Normal cyan

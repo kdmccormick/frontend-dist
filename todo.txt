@@ -1,13 +1,30 @@
 
-Issues in this repo:
-* Add config for program-console, learning.
-* Maybe we shouldn't pass in optimize_minimize, and just let NODE_ENV dictate it.
-* Add nginx rewrite rules to tolerate trailing slashes.
-* Payments gives blank page.
-* Gradebook gives Nginx 404.
-* Profile fails in react router.
+============================== REQUIRED FOR DEMO ==============================
 
-Clean up for this repo (decreasing priority):
+
+Immediate issues in this repo:
+* Dotenv issues.
+    * Which env file(s) should we inject into?
+    * How do we specify a .env file?
+	* What's up with NODE_ENV? Does that relate to .env file?
+	* Do I need to add more values to app .env files?
+	* I think this is causing Gradebook and Program Console to give Nginx 404
+      because it is trying to load /null?next=null...
+* Payments gives blank page.
+	* Because ---output-public-path doesn't seem to be working.
+* Nginx config needs fixing
+	* Nginx rewrite rules aren't letting React app handle routing.
+		* Learning gives Nginx 404 on courses and blocks.
+		* Profile gives Nginx 404 on user pages.
+	* Also, rewrite rules should handle trailing slashes.
+
+Devstack:
+* Figure out volumes for live repositories.
+
+
+============================ NOT REQUIRED FOR DEMO ============================
+
+Clean up for this repo (in decreasing priority):
 * Shared log_msg/log_warning/log_err functions instead of
   'echo -e "${COL}a message{NC}" >&2 for everything.
 * Use 'set -x' instead of echoing commands.
@@ -17,16 +34,13 @@ Clean up for this repo (decreasing priority):
 * Comments in Makefile + auto-generated 'make help' rule.
 * Add readme(s), including required folder structure.
 
-Devstack:
-* Figure out volumes for live repositories.
-
 External issues:
 * Make login redirects work.
-* Use relative paths (handled by 04-apply-shims.sh currently).
+* Use relative paths in React (handled by 04-apply-shims.sh currently).
 * Make env.development compatible (handled by 03-inject-config.sh currently).
 
 Longer term:
-* We assume repo names and location. Should be more flexible.
+* We assume repo name structure and locations. Should be more flexible.
 * Move this to tubular or something.
 * Config could be JSON.
 * Automate docker builds.

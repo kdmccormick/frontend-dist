@@ -1,7 +1,8 @@
 #!/bin/sh
 
-WEBPACK_MINIMIZE=false
 NODE_ENV=production
+
+WEBPACK_MINIMIZE=false
 
 DOCKER_BASE_IMAGE_TAG=kdmccormick96/edx-frontends-base:latest
 DOCKER_CONTAINER_NAME=edx.frontends

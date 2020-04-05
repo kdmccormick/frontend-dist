@@ -5,7 +5,7 @@
 # Blank lines and lines starting with hashes are ignored.
 # Inline comments are not supported.
 account
-payments
+payment
 profile
 gradebook
 program-console
