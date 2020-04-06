@@ -17,14 +17,17 @@ To do on kdmccormick/devstack branches:
 
 kdmccormick/devstack branch status:
 * account
-	* Use relative paths in React routing.
-	* Use kdmccormick/devstack branch of kdmccormick/frontend-build.
-	* Add dev-build command.
-	* Update .env.development.
+	* Used relative paths in React routing.
+	* Used kdmccormick/devstack branch of kdmccormick/frontend-build.
+	* Added dev-build command.
+	* Updated .env.development.
 * gradebook
 	*
 * program-console
-	*
+	* No paths to make relative.
+	* Implemented dev-build command, as no frontend-build.
+	* Made publicPath = ''.
+	* Update .env.development.
 * learning
 	*
 
