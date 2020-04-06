@@ -1,8 +1,7 @@
 .PHONY: all build check.all check.one clean clean.all clean.one dist.all \
         dist.one dist.one.01+ dist.one.02+ dist.one.03+ dist.one.04+ \
-        dist.one.05+ docker.build docker.build.copy docker.build.run \
-        docker.down docker.push docker.reup docker.shell docker.up full_clean \
-        index-page test
+        dist.one.05+ docker.build docker.down docker.go docker.push \
+        docker.reup docker.shell docker.up full_clean index-page test
 
 all: build
 
@@ -42,23 +41,14 @@ check.all:
 check.one:
 	./check.sh
 
-docker.build: docker.build.copy docker.build.run
-
-docker.build.copy:
-	rm -rf docker_base/frontends
-	mkdir -p docker_base/frontends
-	cp -r dist/* docker_base/frontends/
-
-docker.build.run:
+docker.build:
 	. ./env && \
-	cd docker_base && \
 	docker build . \
-	    --tag "$$DOCKER_BASE_IMAGE_TAG" \
-	    --build-arg NGINX_HTML_DIR="$$NGINX_HTML_DIR" \
+	    --tag "$$DOCKER_IMAGE_TAG" \
 	    --build-arg NGINX_CONTAINER_PORT="$$NGINX_CONTAINER_PORT"
 
 docker.push:
-	. ./env && docker push "$$DOCKER_BASE_IMAGE_TAG"
+	. ./env && docker push "$$DOCKER_IMAGE_TAG"
 
 docker.up:
 	. ./env && \
@@ -68,7 +58,7 @@ docker.up:
 	    --interactive \
 	    --publish "$$NGINX_HOST_PORT":"$$NGINX_CONTAINER_PORT" \
 	    --name "$$DOCKER_CONTAINER_NAME" \
-	    "$$DOCKER_BASE_IMAGE_TAG"
+	    "$$DOCKER_IMAGE_TAG"
 
 docker.reup: docker.down docker.up
 
@@ -79,17 +69,20 @@ docker.down:
 docker.shell:
 	. ./env && docker exec -it "$$DOCKER_CONTAINER_NAME" /bin/bash
 
+docker.logs:
+	. ./env && docker logs "$$DOCKER_CONTAINER_NAME"
+
+docker.go: docker.build docker.reup docker.shell
+
 clean: clean.all
 
 clean.all:
 	rm -rf repos
 	rm -rf dist
-	rm -rf docker_base/frontends
 
 clean.one:
 	rm -rf "repos/frontend-app-$$FRONTEND"
 	rm -rf "dist/$$FRONTEND"
-	rm -rf docker_base/frontends
 
 full_clean: clean.all
 	rm -rf node_modules

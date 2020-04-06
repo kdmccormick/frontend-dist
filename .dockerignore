@@ -1,0 +1,6 @@
+# Ignore everything by default.
+*
+
+# Include only the things we need.
+!/dist/
+!devstack-frontends

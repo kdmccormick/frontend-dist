@@ -3,7 +3,7 @@
 
 
 Immediate issues in this repo:
-* Nginx config needs fixing
+* IN PROGRESS: Nginx config needs fixing
 	* Nginx rewrite rules aren't letting React app handle routing.
 		* Learning gives Nginx 404 on courses and blocks.
 		* Profile gives Nginx 404 on user pages.
@@ -41,7 +41,6 @@ Clean up for this repo (in decreasing priority):
 * Shared log_msg/log_warning/log_err functions instead of
   'echo -e "${COL}a message{NC}" >&2 for everything.
 * Use 'set -x' instead of echoing commands.
-* Use .dockerignore simplify repo structure.
 * Makefile targets for docker push.
 * Overrides for frontends.lst
 * Comments in Makefile + auto-generated 'make help' rule.
