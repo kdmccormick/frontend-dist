@@ -1,8 +1,8 @@
 .PHONY: all build check.all check.one clean clean.all clean.one dist.all \
         dist.one dist.one.01+ dist.one.02+ dist.one.03+ dist.one.04+ \
-        dist.one.05+ dist.one.06+ dist.one.07+ docker.build docker.build.copy \
-        docker.build.run docker.down docker.push docker.reup docker.shell \
-        docker.up full_clean index-page test
+        dist.one.05+ docker.build docker.build.copy docker.build.run \
+        docker.down docker.push docker.reup docker.shell docker.up full_clean \
+        index-page test
 
 all: build
 
@@ -22,13 +22,11 @@ dist.one.01+: dist.one.stage.01-update-repo dist.one.02+
 
 dist.one.02+: dist.one.stage.02-npm-install dist.one.03+
 
-dist.one.03+: dist.one.stage.03-inject-config dist.one.04+
+dist.one.03+: dist.one.stage.03-run-webpack dist.one.04+
 
-dist.one.04+: dist.one.stage.04-run-webpack dist.one.05+
+dist.one.04+: dist.one.stage.04-copy-to-dist dist.one.05+
 
-dist.one.05+: dist.one.stage.05-copy-to-dist dist.one.06+
-
-dist.one.06+: |
+dist.one.05+: |
 
 dist.one.stage.%:
 	dist-pipeline/$**.sh
