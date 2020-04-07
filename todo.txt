@@ -1,6 +1,9 @@
 
 ============================== REQUIRED FOR DEMO ==============================
 
+frontend-platform:
+* How do we make basename work?
+  * What's up with the invalid hook call error?
 
 Immediate issues in this repo:
 *
@@ -8,11 +11,9 @@ Immediate issues in this repo:
 kdmccormick/devstack-frontends branch status:
 * account
 	* Used relative paths in React routing.
-	* Used kdmccormick/devstack branch of kdmccormick/frontend-build.
+	* Used kdmccormick/devstack-frontends branch of kdmccormick/frontend-build.
 	* Added dev-build command.
 	* Updated .env.development.
-	* Need to rename branch.
-	* Need to use edx/frontend-build#kdmccormick/devstack-frontends
 * gradebook
 	*
 * program-console
@@ -20,7 +21,12 @@ kdmccormick/devstack-frontends branch status:
 	* Implemented dev-build command, as no frontend-build.
 	* Update .env.development.
 * learning
-	*
+	* Used kdmccormick/devstack-frontends branch of kdmccormick/frontend-build.
+	* Using file frontend-platform.
+* profile
+	* Used kdmccormick/devstack-frontends branch of kdmccormick/frontend-build.
+	* Using file frontend-platform.
+
 
 Devstack:
 * Get live repos with proxy_pass working.
