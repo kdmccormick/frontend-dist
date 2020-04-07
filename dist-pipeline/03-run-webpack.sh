@@ -6,5 +6,5 @@ cd "$repo_dir"
 
 echo -e "${MSG}Running webpack.${NC}" >&2
 set -x
-npm run dev-build --output-public-path="/${frontend_name}/"
+npm run dev-build -- --output-public-path="/${frontend_name}/"
 set +x

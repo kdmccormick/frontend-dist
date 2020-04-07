@@ -4,7 +4,7 @@
 mkdir -p repos
 repo_name=frontend-app-${frontend_name}
 repo_dir="repos/${repo_name}"
-branch="kdmccormick/devstack"
+branch="kdmccormick/devstack-frontends"
 
 if [[ -d "$repo_dir/.git" ]]; then
 	echo -e "${MSG}Resetting ${repo_dir} to head of origin/master...${NC}" >&2

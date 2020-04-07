@@ -5,18 +5,19 @@
 Immediate issues in this repo:
 *
 
-kdmccormick/devstack branch status:
+kdmccormick/devstack-frontends branch status:
 * account
 	* Used relative paths in React routing.
 	* Used kdmccormick/devstack branch of kdmccormick/frontend-build.
 	* Added dev-build command.
 	* Updated .env.development.
+	* Need to rename branch.
+	* Need to use edx/frontend-build#kdmccormick/devstack-frontends
 * gradebook
 	*
 * program-console
 	* No paths to make relative.
 	* Implemented dev-build command, as no frontend-build.
-	* Made publicPath = ''.
 	* Update .env.development.
 * learning
 	*
@@ -38,7 +39,7 @@ Clean up for this repo (in decreasing priority):
 
 External issues:
 * Make login redirects work.
-* Make env.development compatible (handled by 03-inject-config.sh currently).
+* Merge in changes to repos.
 
 Longer term:
 * We assume repo name structure and locations. Should be more flexible.
