@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 . dist-pipeline/include.sh
 
-repo_dir=repos/frontend-app-${frontend_name}
+repo_dir=repos/${repo_name}
 cd "$repo_dir"
 
 echo -e "${MSG}Running webpack.${NC}" >&2

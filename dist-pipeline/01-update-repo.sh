@@ -2,7 +2,6 @@
 . dist-pipeline/include.sh
 
 mkdir -p repos
-repo_name=frontend-app-${frontend_name}
 repo_dir="repos/${repo_name}"
 branch="kdmccormick/devstack-frontends"
 

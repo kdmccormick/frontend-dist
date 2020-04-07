@@ -10,12 +10,15 @@ NC='\033[0m'      # No Color
 
 msgbold='\033[1;32m'  # Green
 
-frontend_name="$FRONTEND"
-if [[ -z "$frontend_name" ]]; then
-	echo -e "${ERR}Environtment variable FRONTEND must be set. Exiting.${NC}" >&2
-	exit 123
+if [[ ! -z "$FRONTEND" ]] ; then
+	echo -e "${msgbold}Running '$0' for FRONTEND=$FRONTEND${NC}" >&2
+elif [[ ! -z "$REPO" ]] ; then
+	echo -e "${msgbold}Running '$0' for REPO=$REPO${NC}" >&2
 else
-	echo -e "${msgbold}Running '$0' for FRONTEND=$frontend_name${NC}" >&2
+	echo -e "${ERR}Environtment variable FRONTEND or REPO must be set. Exiting.${NC}" >&2
+	exit 123
 fi
+frontend_name="$FRONTEND"
+repo_name=${REPO:-frontend-app-${frontend_name}}
 
 set -u
