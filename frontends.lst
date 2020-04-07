@@ -4,7 +4,7 @@
 # at https://github.com/edx/frontend-app-${name}.
 # Blank lines and lines starting with hashes are ignored.
 # Inline comments are not supported.
-# account
+account
 # gradebook
 program-console
 # learning
