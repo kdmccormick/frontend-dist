@@ -3,17 +3,7 @@
 
 
 Immediate issues in this repo:
-* IN PROGRESS: Nginx config needs fixing
-	* Nginx rewrite rules aren't letting React app handle routing.
-		* Learning gives Nginx 404 on courses and blocks.
-		* Profile gives Nginx 404 on user pages.
-	* Also, rewrite rules should handle trailing slashes.
-
-To do on kdmccormick/devstack branches:
-* Use kdmccormick/devstack branch of kdmccormick/frontend-build.
-* Add dev-build command
-* Use relative paths in React routing.
-* Update .env.development.
+*
 
 kdmccormick/devstack branch status:
 * account
@@ -32,7 +22,7 @@ kdmccormick/devstack branch status:
 	*
 
 Devstack:
-* Figure out volumes for live repositories.
+* Get live repos with proxy_pass working.
 
 
 ============================ NOT REQUIRED FOR DEMO ============================

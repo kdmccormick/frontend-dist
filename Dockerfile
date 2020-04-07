@@ -9,11 +9,14 @@ RUN apt-get install nginx -y
 RUN rm /etc/nginx/sites-enabled/default
 
 # Copy nginx configuration to sites-available and link in sites-enabled.
-COPY devstack-frontends /etc/nginx/sites-available/
+COPY devstack-frontends.nginx.conf /etc/nginx/sites-available/devstack-frontends
 RUN ln -s /etc/nginx/sites-available/devstack-frontends /etc/nginx/sites-enabled/devstack-frontends
 
+# Allow for custom nginx rules for Devstack.
+RUN mkdir -p /edx/etc/nginx-devstack/
+
 # Copy in frontends.
-COPY dist /var/www/html
+COPY dist/ /var/www/html/
 
 # Expose the port for serving HTTP.
 ARG NGINX_CONTAINER_PORT

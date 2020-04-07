@@ -3,4 +3,4 @@
 
 # Include only the things we need.
 !/dist/
-!devstack-frontends
+!devstack-frontends.nginx.conf
