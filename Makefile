@@ -1,7 +1,8 @@
 .PHONY: all build check.all check.one clean clean.all clean.one dist.all \
         dist.one dist.one.01+ dist.one.02+ dist.one.03+ dist.one.04+ \
-        dist.one.05+ docker.build docker.down docker.go docker.push \
-        docker.reup docker.shell docker.up full_clean index-page test
+        dist.one.05+ docker.build docker.down docker.go docker.logs \
+        docker.push docker.reup docker.shell docker.up frontend-platform \
+        full_clean index-page test
 
 all: build
 
