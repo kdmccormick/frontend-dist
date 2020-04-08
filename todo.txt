@@ -1,38 +1,51 @@
 
 ============================== REQUIRED FOR DEMO ==============================
 
-frontend-platform:
-* How do we make basename work?
-  * What's up with the invalid hook call error?
 
 Immediate issues in this repo:
 *
 
 kdmccormick/devstack-frontends branch status:
-* account
+* frontend-app-account: working!
 	* Used relative paths in React routing.
 	* Used kdmccormick/devstack-frontends branch of kdmccormick/frontend-build.
 	* Added dev-build command.
 	* Updated .env.development.
-* gradebook
-	*
-* program-console
+* frontend-app-program-console : working!
 	* No paths to make relative.
 	* Implemented dev-build command, as no frontend-build.
 	* Update .env.development.
-* learning
+* frontend-app-learning: in progress
+	* Used kdmccormick/devstack-frontends branch of kdmccormick/frontend-build.
+	* Stopped using file frontend-platform due to hook stuff.
+	* Manually prefixed a bunch of paths with /learning
+	* ...
+* frontend-app-gradebook:
+	* Used relative paths.
+	* Implemented dev-build command, as no frontend-build.
+	* Update .env.development.
+* registrar: all set
+    * Update CORS whitelist to allow Program Console
+* edx-platform: all set
+	* Update CORS whitelist to allow all frontends.
+	* Add localhost:19000 to login redirect.
+* frontend-app-profile: stuck
 	* Used kdmccormick/devstack-frontends branch of kdmccormick/frontend-build.
 	* Using file frontend-platform.
-* profile
-	* Used kdmccormick/devstack-frontends branch of kdmccormick/frontend-build.
-	* Using file frontend-platform.
-
+	* "Invalid hook call" error in browser.
+	* Getting this for all MFEs in which I installed custom frontend-platform.
+	* Going to punt here, and manually fix learning and gradebook.
 
 Devstack:
 * Get live repos with proxy_pass working.
 
 
 ============================ NOT REQUIRED FOR DEMO ============================
+
+frontend-platform:
+* How do we make basename work?
+  * What's up with the invalid hook call error?
+
 
 Clean up for this repo (in decreasing priority):
 * Shared log_msg/log_warning/log_err functions instead of

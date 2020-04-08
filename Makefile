@@ -10,13 +10,13 @@ build: frontend-platform dist.all index-page docker.build
 
 test: build docker.reup check.all
 
-frontend-platform:
-	REPO=frontend-platform make dist.one.stage.01 dist.one.stage.02
-	@echo "\033[1;32mBuilding frontend-platform.\033[0m"  >&2
-	cd repos/frontend-platform && \
+frontend-platform:  # Teporarily disabled.
+	#REPO=frontend-platform make dist.one.stage.01 dist.one.stage.02
+	#@echo "\033[1;32mBuilding frontend-platform.\033[0m"  >&2
+	true || (cd repos/frontend-platform && \
 		npm run build && \
 		cd dist && \
-		npm install
+		npm install)
 
 dist.all:
 	./foreach-frontend.sh make dist.one
