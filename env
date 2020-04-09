@@ -4,7 +4,7 @@ NODE_ENV=production
 
 WEBPACK_MINIMIZE=false
 
-DOCKER_IMAGE_TAG=kdmccormick96/edx-frontends-base:latest
+DOCKER_IMAGE_TAG=kdmccormick96/devstack-frontends:latest
 DOCKER_CONTAINER_NAME=edx.frontends
 
 NGINX_CONTAINER_PORT=80
