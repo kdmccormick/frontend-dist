@@ -57,7 +57,7 @@ docker.up:
 	    --detach \
 	    --tty \
 	    --interactive \
-	    --publish "$$NGINX_HOST_PORT":"$$NGINX_CONTAINER_PORT" \
+	    --publish "$$DOCKER_HOST_PORT":"$$NGINX_CONTAINER_PORT" \
 	    --name "$$DOCKER_CONTAINER_NAME" \
 	    "$$DOCKER_IMAGE_TAG"
 

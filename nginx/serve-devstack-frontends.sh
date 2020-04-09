@@ -3,6 +3,9 @@ set -e
 set -o pipefail
 set -u
 
+# Exit upon docker shutdown (15 == SIGTERM)
+trap "exit" 15
+
 while true; do
 	echo "Generating nginx configuration."
 	/edx/app/write-nginx-conf.sh

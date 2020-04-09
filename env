@@ -6,9 +6,10 @@ WEBPACK_MINIMIZE=false
 
 DOCKER_IMAGE_TAG=kdmccormick96/devstack-frontends:latest
 DOCKER_CONTAINER_NAME=edx.frontends
+DOCKER_HOST_PORT=19000
 
-NGINX_CONTAINER_PORT=80
-NGINX_HOST_PORT=19000
+# If this changes, it must also be changed in devstack-frontends.nginx.tpl
+NGINX_CONTAINER_PORT=19000
 
 # Load up local overrides (git-ignored)
 if test -f ./env.overrides ; then

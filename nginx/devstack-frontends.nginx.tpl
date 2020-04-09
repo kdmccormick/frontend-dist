@@ -7,6 +7,9 @@ server {
     # Catch-all hostname.
     server_name _;
 
+    # Set port.
+    listen 19000 default_server;
+
     # Use relative redirects (no hostname+port part of URL).
     # This stops nginx from clobbering the port number.
     absolute_redirect off;
