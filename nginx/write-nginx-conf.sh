@@ -4,7 +4,7 @@ set -u
 set -o pipefail
 
 set +x
-HOST_REDIRECTS=/edx/app/host-frontends.local
+HOST_REDIRECTS=/edx/app/mounted-config/host-frontends
 CUSTOM_CONFIG_TEMPLATE=/edx/app/devstack-frontends.nginx.tpl
 CUSTOM_CONFIG_TEMPLATE=/edx/app/devstack-frontends.nginx.tpl
 CUSTOM_CONFIG=/edx/app/devstack-frontends.nginx
@@ -16,11 +16,16 @@ set -x
 # Generate nginx configuration from template and host redirects file.
 # If that fails, just use template as config file.
 rm -f "$CUSTOM_CONFIG"
-(/edx/app/inject-host-redirects.sh \
-	"$HOST_REDIRECTS" \
-	"$CUSTOM_CONFIG_TEMPLATE" \
-	> "$CUSTOM_CONFIG") || \
+if [[ -f "$HOST_REDIRECTS" ]]; then
+	(/edx/app/inject-host-redirects.sh \
+		"$HOST_REDIRECTS" \
+		"$CUSTOM_CONFIG_TEMPLATE" \
+		> "$CUSTOM_CONFIG"\
+	) || \
 	cp "$CUSTOM_CONFIG_TEMPLATE" "$CUSTOM_CONFIG"
+else
+	cp "$CUSTOM_CONFIG_TEMPLATE" "$CUSTOM_CONFIG"
+fi
 
 # Link custom configuration as available nginx site.
 rm -f "$CUSTOM_CONFIG_AVAILABLE"
