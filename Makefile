@@ -1,8 +1,8 @@
 .PHONY: all build check.all check.one clean clean.all clean.one dist.all \
         dist.one dist.one.01+ dist.one.02+ dist.one.03+ dist.one.04+ \
-        dist.one.05+ docker.build docker.down docker.go docker.logs \
-        docker.push docker.reup docker.shell docker.up frontend-platform \
-        full_clean index-page test
+        dist.one.05+ docker.attach docker.build docker.down docker.go \
+        docker.logs docker.push docker.reup docker.shell docker.up \
+        frontend-platform full_clean index-page test
 
 all: build
 
@@ -77,6 +77,9 @@ docker.down:
 
 docker.shell:
 	. ./env && docker exec -it "$$DOCKER_CONTAINER_NAME" /bin/bash
+
+docker.attach:
+	. ./env && docker attach "$$DOCKER_CONTAINER_NAME"
 
 docker.logs:
 	. ./env && docker logs "$$DOCKER_CONTAINER_NAME"

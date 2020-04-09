@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+set -o pipefail
+set -u
+
+while true; do
+	echo "Generating nginx configuration."
+	/edx/app/generate-nginx-conf.sh
+	echo "Starting nginx."
+	set -x
+	nginx -g "daemon off;"
+	set +x
+	echo "nginx killed."
+	sleep 1
+done
