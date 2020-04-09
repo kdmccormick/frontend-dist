@@ -1,22 +1,14 @@
 .PHONY: all build check.all check.one clean clean.all clean.one dist.all \
         dist.one dist.one.01+ dist.one.02+ dist.one.03+ dist.one.04+ \
         dist.one.05+ docker.attach docker.build docker.down docker.go \
-        docker.logs docker.push docker.reup docker.shell docker.up \
-        frontend-platform full_clean index-page test
+        docker.kick-nginx docker.logs docker.push docker.reup docker.shell \
+        docker.up full_clean index-page test
 
 all: build
 
-build: frontend-platform dist.all index-page docker.build
+build: dist.all index-page docker.build
 
 test: build docker.reup check.all
-
-frontend-platform:  # Teporarily disabled.
-	#REPO=frontend-platform make dist.one.stage.01 dist.one.stage.02
-	#@echo "\033[1;32mBuilding frontend-platform.\033[0m"  >&2
-	true || (cd repos/frontend-platform && \
-		npm run build && \
-		cd dist && \
-		npm install)
 
 dist.all:
 	./foreach-frontend.sh make dist.one
