@@ -20,8 +20,6 @@ server {
     # Host frontend redirects will be injected after this line.
     #HOST_FRONTEND_REDIRECTS
 
-    # rewrite ^/account(/(.*))?$ http://localhost:1997/$2 redirect;
-
     # Add trailing slashes to all URLs that do not contain a question mark
     # (for query params) or dot (for file names).
     rewrite ^([^.\?]*[^/])$ $1/ redirect;

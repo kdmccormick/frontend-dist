@@ -5,7 +5,7 @@ set -u
 
 while true; do
 	echo "Generating nginx configuration."
-	/edx/app/generate-nginx-conf.sh
+	/edx/app/write-nginx-conf.sh
 	echo "Starting nginx."
 	set -x
 	nginx -g "daemon off;"

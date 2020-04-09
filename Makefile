@@ -86,6 +86,10 @@ docker.logs:
 
 docker.go: docker.build docker.reup docker.shell
 
+docker.kick-nginx:
+	. ./env && docker exec -t "$$DOCKER_CONTAINER_NAME" \
+		bash -c 'kill $$(ps aux | grep "nginx: master process" | egrep -v "grep" | awk "{print \$$2}")'
+
 clean: clean.all
 
 clean.all:
